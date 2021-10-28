@@ -22,6 +22,10 @@ static const float zoom_levels[] = {
 	100.0, 150.0, 200.0, 400.0, 800.0
 };
 
+// Kanon needs his bar color
+static const char * const BAR_BG_COLOR = "#222222";
+static const char * const BAR_FG_COLOR = "#EEEEEE";
+
 /* default slideshow delay (in sec, overwritten via -S option): */
 enum { SLIDESHOW_DELAY = 5 };
 
@@ -77,6 +81,8 @@ static const keymap_t keys[] = {
 	{ ControlMask,  XK_l,             g_scroll_screen,      DIR_RIGHT },
 	{ ControlMask,  XK_Right,         g_scroll_screen,      DIR_RIGHT },
 	{ 0,            XK_plus,          g_zoom,               +1 },
+	{ 0,            XK_K,             g_zoom,               +1 },
+	{ 0,            XK_J,             g_zoom,               -1 },
 	{ 0,            XK_KP_Add,        g_zoom,               +1 },
 	{ 0,            XK_minus,         g_zoom,               -1 },
 	{ 0,            XK_KP_Subtract,   g_zoom,               -1 },
@@ -99,10 +105,9 @@ static const keymap_t keys[] = {
 	{ 0,            XK_l,             t_move_sel,           DIR_RIGHT },
 	{ 0,            XK_Right,         t_move_sel,           DIR_RIGHT },
 	{ 0,            XK_R,             t_reload_all,         None },
-
+	{ 0,            XK_space,         i_toggle_animation,   None },
 	{ 0,            XK_n,             i_navigate,           +1 },
 	{ 0,            XK_n,             i_scroll_to_edge,     DIR_LEFT | DIR_UP },
-	{ 0,            XK_space,         i_navigate,           +1 },
 	{ 0,            XK_p,             i_navigate,           -1 },
 	{ 0,            XK_p,             i_scroll_to_edge,     DIR_LEFT | DIR_UP },
 	{ 0,            XK_BackSpace,     i_navigate,           -1 },
@@ -111,7 +116,6 @@ static const keymap_t keys[] = {
 	{ ControlMask,  XK_6,             i_alternate,          None },
 	{ ControlMask,  XK_n,             i_navigate_frame,     +1 },
 	{ ControlMask,  XK_p,             i_navigate_frame,     -1 },
-	{ ControlMask,  XK_space,         i_toggle_animation,   None },
 	{ 0,            XK_h,             i_scroll,             DIR_LEFT },
 	{ 0,            XK_Left,          i_scroll,             DIR_LEFT },
 	{ 0,            XK_j,             i_scroll,             DIR_DOWN },
@@ -120,10 +124,8 @@ static const keymap_t keys[] = {
 	{ 0,            XK_Up,            i_scroll,             DIR_UP },
 	{ 0,            XK_l,             i_scroll,             DIR_RIGHT },
 	{ 0,            XK_Right,         i_scroll,             DIR_RIGHT },
-	{ 0,            XK_H,             i_scroll_to_edge,     DIR_LEFT },
-	{ 0,            XK_J,             i_scroll_to_edge,     DIR_DOWN },
-	{ 0,            XK_K,             i_scroll_to_edge,     DIR_UP },
-	{ 0,            XK_L,             i_scroll_to_edge,     DIR_RIGHT },
+	{ 0,            XK_H,             i_navigate,           -1 },
+	{ 0,            XK_L,             i_navigate,           +1 },
 	{ 0,            XK_equal,         i_set_zoom,           100 },
 	{ 0,            XK_w,             i_fit_to_win,         SCALE_DOWN },
 	{ 0,            XK_W,             i_fit_to_win,         SCALE_FIT },
